@@ -46,7 +46,30 @@ def WeeklyPaymentCalculator():
         return # to stop the function
     
     try:
-        hours = float(args[1])
+        hours = float(args[0])
+        normal_rate = float(args[1])
+        overtime_rate = float(args[2])
+
+        # Check for negative inputs
+        if hours < 0 or hours > 100 or normal_rate < 0 or normal_rate > 1000 or overtime_rate < 0 or overtime_rate > 1000:
+            print("Your input is invalid!")
+            return
+        
+    except:
+        print("Your input is invalid!")
+        return
+    
+    # Calculate salaries
+    if  hours <= 40:
+        normal_salary = hours * normal_rate
+        overtime_salary = 0
+    else:
+        normal_salary = 40 * normal_rate
+        overtime_salary = (hours - 40) * overtime_rate
+
+    total_salary = normal_salary + overtime_salary
+
+    print(f"Normal Salary:{normal_salary:.2f}, Extra Salary:{overtime_salary:.2f}, Total Salary: {total_salary:.2f}")
 
 
 if __name__=='__main__':

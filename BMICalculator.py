@@ -116,7 +116,7 @@ def BMICalculator():
     else:
         category = "Obese Class III"
 
-    print(f"{bmi:.2f} {category}")
+    print(f"{bmi:.2f}\t{category}")
 
 if __name__=='__main__':
     BMICalculator()
