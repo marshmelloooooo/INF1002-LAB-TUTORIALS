@@ -45,13 +45,13 @@ def WeeklyPaymentCalculator():
         print("Your input is invalid!")
         return # to stop the function
     
-    try:
+    try: # Convert input arguments to float
         hours = float(args[0])
         normal_rate = float(args[1])
         overtime_rate = float(args[2])
 
         # Check for negative inputs
-        if hours < 0 or hours > 100 or normal_rate < 0 or normal_rate > 1000 or overtime_rate < 0 or overtime_rate > 1000:
+        if hours < 0 or normal_rate <0 or overtime_rate < 0:
             print("Your input is invalid!")
             return
         
