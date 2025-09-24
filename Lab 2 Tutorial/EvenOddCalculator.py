@@ -32,7 +32,57 @@ import sys
 # you can use sys.argv[1] to get the first input argument.
 # sys.argv[2] is the second argument, etc.
 def EvenOddCalculator():
-     pass
+     
+       # Step 1: Check if the user provided exactly one argument (the numbers)
+     if len(sys.argv) != 2:                                    # len() gives the number of items in the list; != means "not equal" 
+           print("Please enter valid integers")                # show error if wrong input
+           return                                              # stop the function here
+
+       # Step 2: Convert input string into a list of integers
+     try:
+           # sys.argv[1] os the first argument (string of numbers, e.g., "12,6,34,3,100")
+           # split (",") divides the string into pieces at commas
+           # int(x) converts each piece into an integer
+           numbers = [int(x) for x in sys.argv[1].split(",")]
+     except ValueError:
+           # if any value is not an integer, show error and exit
+           print("Please enter valid integers")
+           return
+     
+       # Step 3: initialize counters for even/odd sums and counts
+     even_sum = 0    # sum of all even numbers
+     odd_sum = 0     # sum of all odd numbers
+     even_count = 0  # number of even numbers
+     odd_count = 0   # number of odd numbers
+
+       # Step 4: loop through numbers to calculate sum and counts
+     for n in numbers:        # n takes each number in the list
+            if n % 2 == 0:     # % is modulo; n % 2 == 0 checks if n is even
+                 even_sum += n 
+                 even_count += 1
+
+            else:
+                 odd_sum += n
+                 odd_count += 1
+
+     # Step 5: Find the difference between the biggest and smallest numbers
+     differnece = max(numbers) - min(numbers) # max() finds largest, min() finds smallest
+     
+     # Step 6: Calculate centered average
+     nums_copy = sorted(numbers)                                         # Create a sorted copy of numbers (smallest > largest)
+     nums_copy.remove(min(nums_copy))                                    # remove ONE smallest number
+     nums_copy.remove(max(nums_copy))                                    # remove ONE largest number
+     centered_avg = sum(nums_copy) // len(nums_copy)                     # sum all remaining numbers and divided by count (integer division)
+
+     # Step 7: print everything in ONE line 
+     print(f"The sum of all even numbers is {even_sum},"
+           f"The sum of all odd numbers is {odd_sum},"
+           f"the difference between the biggest and smallest number is {differnece},"
+           f"the total number of even numbers is {even_count},"
+           f"the total number of odd numbers is {odd_count},"
+           f"the centered average is {centered_avg}.")
+     
+     # Step 8 run the function if this file is executed directly
 
 if __name__=='__main__':
       EvenOddCalculator()
