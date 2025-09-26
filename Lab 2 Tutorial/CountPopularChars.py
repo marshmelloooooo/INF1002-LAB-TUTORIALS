@@ -21,7 +21,7 @@ import sys
 def CountPopularChars():
     # Step 1: Read input string
     if len(sys.argv) >= 2:
-        s = sys.argv[1]            # take first argument
+        s = sys.argv[1]           # take first argument #dont do if else # change to loewrcase cstore them in a dictionary look for each character in the list
     else:
         s = sys.stdin.read().strip()  # fallback: read from standard input
 
