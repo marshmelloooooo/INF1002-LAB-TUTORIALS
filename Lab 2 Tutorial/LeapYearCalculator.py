@@ -30,7 +30,37 @@ import sys
 # you can use sys.argv[1] to get the first input argument.
 # sys.argv[2] is the second argument, etc.
 def LeapYearCalculator():
-     pass
+     # step 1: validate input checks if user gave exactly 2 numbers (so len(sys.argv) should be 3)
+     if len(sys.argv) != 3:                       # len() counts how many arguments are in sys.argv // sys.argv[0] is filename, [1] amd [2] are input
+          print("Your input is invalid!")         # if not 3, tell user its wrong      
+          return                                  # stop the program here
+     
+     try: # step 2: convert the arguments which are strings into integers
+          start = int(sys.argv[1])                # sys.argv[1] is the first number the user typed  // first year = start year
+          end   = int(sys.argv[2])                # sys.argv[2] is the second number the user typed // second year = end year
+     except ValueError:                           # if user typed something thats not a number
+          print("Your input is invalid!")
+          return                                  # stop program
+     
+     # step 3: make sure start ≤ end, otherwise invalid
+     if start > end:
+          print("Your input is invalid!")
+          return
+     
+     # step 4: prepare a list to store leap years
+     leap_years = []
+
+     # step 5: loop through each year in the range
+     for year in range(start, end + 1):           # + 1 so the end year is inlcuded
+          if (year % 4 == 0 and year % 100 != 0) or (year % 400 == 0):
+               leap_years.append(year)            # add leap year to the list
+     
+     # step 6: print results
+     if len(leap_years) == 0:                     # no leap years found
+          print("The number of Leap Years is 0, the Leap Years are")
+     else:
+          leap_str = ",".join(map(str, leap_years))
+          print(f"The number of Leap Years is {len(leap_years)}, the Leap Years are {leap_str}")
 
 if __name__=='__main__':
      LeapYearCalculator()

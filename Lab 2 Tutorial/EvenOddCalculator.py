@@ -46,7 +46,7 @@ def EvenOddCalculator():
            numbers = [int(x) for x in sys.argv[1].split(",")]
      except ValueError:
            # if any value is not an integer, show error and exit
-           print("Please enter valid integers")
+           print("Please enter valid integers.")
            return
      
        # Step 3: initialize counters for even/odd sums and counts
@@ -76,7 +76,7 @@ def EvenOddCalculator():
 
      # Step 7: print everything in ONE line 
      print(f"The sum of all even numbers is {even_sum},"
-           f"The sum of all odd numbers is {odd_sum},"
+           f"the sum of all odd numbers is {odd_sum},"
            f"the difference between the biggest and smallest number is {differnece},"
            f"the total number of even numbers is {even_count},"
            f"the total number of odd numbers is {odd_count},"
